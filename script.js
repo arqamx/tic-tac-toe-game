@@ -21,3 +21,10 @@ cells.forEach(cell => {
 function checkDraw() {
     return [...cells].every(cell => cell.textContent !== '');
 }
+
+function resetGame() {
+    cells.forEach(cell => {
+        cell.textContent = '';
+    });
+    currentPlayer = 'X'
+}
