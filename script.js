@@ -1,4 +1,5 @@
 const cells = document.querySelectorAll('.cell');
+const playButton = document.querySelector('.play-button');
 let currentPlayer = 'X';
 
 cells.forEach(cell => {
@@ -7,10 +8,8 @@ cells.forEach(cell => {
             cell.textContent = currentPlayer;
             if(checkWin()) {
                 showMessage(`${currentPlayer} wins!`);
-                resetGame();
             } else if(checkDraw()) {
                 showMessage('It\'s a draw!');
-                resetGame();
             } else {
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
                 showMessage(`Player ${currentPlayer}'s turn`);
@@ -18,6 +17,8 @@ cells.forEach(cell => {
         }
     });
 });
+
+playButton.addEventListener('click', resetGame);
 
 function checkDraw() {
     return [...cells].every(cell => cell.textContent !== '');
