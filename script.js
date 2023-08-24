@@ -6,13 +6,14 @@ cells.forEach(cell => {
         if(!cell.textContent) {
             cell.textContent = currentPlayer;
             if(checkWin()) {
-                alert(`${currentPlayer} wins!`);
+                showMessage(`${currentPlayer} wins!`);
                 resetGame();
             } else if(checkDraw()) {
-                alert('It\'s a draw!');
+                showMessage('It\'s a draw!');
                 resetGame();
             } else {
                 currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                showMessage(`Player ${currentPlayer}'s turn`);
             }
         }
     });
@@ -27,6 +28,7 @@ function resetGame() {
         cell.textContent = '';
     });
     currentPlayer = 'X'
+    showMessage(`Player ${currentPlayer}'s turn`);
 }
 
 function checkWin() {
@@ -46,4 +48,9 @@ function checkWin() {
     }
 
     return false;
+}
+
+function showMessage(message) {
+    const messageDiv = document.querySelector('.message');
+    messageDiv.textContent = message;
 }
