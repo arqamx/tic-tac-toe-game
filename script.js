@@ -5,7 +5,7 @@ cells.forEach(cell => {
     cell.addEventListener('click', () => {
         if(!cell.textContent) {
             cell.textContent = currentPlayer;
-            if(CheckWin()) {
+            if(checkWin()) {
                 alert(`${currentPlayer} wins!`);
                 resetGame();
             } else if(checkDraw()) {
@@ -29,7 +29,7 @@ function resetGame() {
     currentPlayer = 'X'
 }
 
-function CheckWin() {
+function checkWin() {
     const winningCombinations = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],  // Rows
         [0, 3, 6], [1, 4, 7], [2, 5, 8],  // Columns
@@ -38,7 +38,8 @@ function CheckWin() {
 
     for (const combination of winningCombinations) {
         const [a, b, c] = combination;
-        if (cells[a].textContent === cells[b].textContent && 
+        if (cells[a].textContent &&
+            cells[a].textContent === cells[b].textContent && 
             cells[a].textContent === cells[c].textContent) {
                 return true;
             }
