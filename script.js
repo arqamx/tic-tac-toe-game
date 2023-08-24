@@ -17,3 +17,7 @@ cells.forEach(cell => {
         }
     });
 });
+
+function checkDraw() {
+    return [...cells].every(cell => cell.textContent !== '');
+}
